@@ -1,10 +1,29 @@
 {
   "name": "slate-paste-imagify",
-  "version": "1.0.0",
+  "version": "0.0.0-semanticaly-released",
   "description": "A Slate plugin that converts a selection in a image block element when a URL is pasted from the clipboard.",
-  "main": "src/index.js",
+  "main": "src/index.es5.js",
+  "engines": {
+    "node": ">=6.10"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run compile && npm run uglify && npm run clean",
+    "code:quality": "npm run lint && npm run lint:fix",
+    "clean": "rm -f src/index.es5.js",
+    "commit": "git-cz",
+    "compile": "babel src/index.es.js --out-file src/index.es5.js",
+    "example": "npm run build && node example",
+    "lint": "eslint . && echo 'No linting error found'",
+    "lint:fix": "eslint 'src/index.es5.js' --fix",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "uglify": "uglifyjs --compress --mangle -o src/index.es5.js -- src/index.es5.js"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "repository": {
     "type": "git",
@@ -28,5 +47,20 @@
   "peerDependencies": {
     "slate": "^0.44.9",
     "slate-react": "^0.21.15"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "commitizen": "^3.0.5",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^5.11.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "husky": "^1.2.1",
+    "semantic-release": "^15.13.1",
+    "travis-deploy-once": "^5.0.11",
+    "uglify-es": "^3.3.9"
   }
 }

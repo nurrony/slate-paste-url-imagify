@@ -1,8 +1,8 @@
 {
   "name": "slate-paste-imagify",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A Slate plugin that converts a selection in a image block element when a URL is pasted from the clipboard.",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,11 +10,23 @@
     "type": "git",
     "url": "git+https://github.com/nmrony/slate-paste-imagify.git"
   },
-  "keywords": [],
+  "keywords": [
+    "slate",
+    "slate plugins",
+    "plugin",
+    "slate-react"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nmrony/slate-paste-imagify/issues"
   },
-  "homepage": "https://github.com/nmrony/slate-paste-imagify#readme"
+  "homepage": "https://nmrony.github.com/nmrony/slate-paste-imagify#readme",
+  "dependencies": {
+    "is-url": "^1.2.4"
+  },
+  "peerDependencies": {
+    "slate": "^0.44.9",
+    "slate-react": "^0.21.15"
+  }
 }

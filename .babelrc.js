@@ -5,7 +5,8 @@ module.exports = {
       '@babel/env',
       {
         targets: {
-          node: '6.10'
+          node: '6.10',
+          browsers: ['last 2 versions', 'safari >= 7']
         },
         useBuiltIns: 'usage',
         debug: true

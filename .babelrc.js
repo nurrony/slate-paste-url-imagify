@@ -6,10 +6,10 @@ module.exports = {
       {
         targets: {
           node: '6.10',
-          browsers: ['last 2 versions', 'safari >= 7']
+          browsers: ['>0.2%', 'not dead', 'not ie <= 11', 'not op_mini all', 'safari >= 7']
         },
         useBuiltIns: 'usage',
-        debug: true
+        debug: false
       }
     ]
   ],

@@ -1,2 +1,51 @@
+import got from 'got';
 import isUrl from 'is-url';
-console.log(isUrl('https://nmrony.info'));
+const getExtension = name =>
+  name
+    .split('.')
+    .pop()
+    .toLowerCase();
+
+const isAllowedImage = (allowedImageTypes, extension = '') => allowedImageTypes.includes(extension);
+
+const fetchRemoteExtension = async url => {
+  try {
+    const { headers } = await got.get(url);
+    return headers['content-type'].split('/').pop();
+  } catch (error) {
+    throw error;
+  }
+};
+
+export default function PasteImagify(options = {}) {
+  const { insertPastedImage = 'insertPastedImage', allowedImageTypes = ['jpg', 'jpeg', 'png', 'gif', 'svg'] } = options;
+
+  return {
+    async onCommand(command, editor, next) {
+      const { type, args } = command;
+      let url;
+      if (
+        (type === 'insertText' && isUrl((url = args[0]))) ||
+        (type === 'insertFragment' && isUrl((url = args[0].text)))
+      ) {
+        try {
+          if (isAllowedImage(allowedImageTypes, getExtension(url))) {
+            editor.command(insertPastedImage, url).moveToEnd();
+            return;
+          }
+
+          const remoteExtension = await fetchRemoteExtension(url);
+          if (isAllowedImage(allowedImageTypes, remoteExtension)) {
+            editor.command(insertPastedImage, url).moveToEnd();
+            return;
+          }
+          next();
+        } catch (exception) {
+          console.log('error in PasteImagify', exception);
+          next();
+        }
+      }
+      next();
+    }
+  };
+}

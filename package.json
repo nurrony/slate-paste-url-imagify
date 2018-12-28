@@ -1,6 +1,6 @@
 {
-  "name": "slate-paste-imagify",
-  "version": "0.0.0-simantic-release",
+  "name": "slate-paste-url-imagify",
+  "version": "0.0.0-semantically-released",
   "description": "A Slate plugin that converts a selection in a image block element when a URL is pasted from the clipboard.",
   "main": "src/index.js",
   "engines": {

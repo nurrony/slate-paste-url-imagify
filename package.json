@@ -15,6 +15,7 @@
     "example": "npm run build && node example",
     "lint": "eslint . && echo 'No linting error found'",
     "lint:fix": "eslint 'src/index.es.js' --fix",
+    "prepublishOnly": "npm run build",
     "travis-deploy-once": "travis-deploy-once",
     "test": "ava",
     "semantic-release": "semantic-release"

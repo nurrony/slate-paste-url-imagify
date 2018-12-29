@@ -1,23 +1,22 @@
 {
   "name": "slate-paste-url-imagify",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.0-development",
   "description": "A Slate plugin that converts a selection in a image block element when a URL is pasted from the clipboard.",
   "main": "src/index.js",
   "engines": {
     "node": ">=6.10"
   },
   "scripts": {
-    "build": "npm run compile && npm run uglify && npm run clean",
+    "build": "npm run clean && npm run compile",
     "code:quality": "npm run lint && npm run lint:fix && npm run test",
-    "clean": "rm -f src/index.es5.js",
+    "clean": "rm -f src/index.js",
     "commit": "git-cz",
-    "compile": "babel src/index.es.js --out-file src/index.es5.js",
+    "compile": "babel src/index.es.js --out-file src/index.js --no-comments --minified",
     "example": "npm run build && node example",
     "lint": "eslint . && echo 'No linting error found'",
     "lint:fix": "eslint 'src/index.es.js' --fix",
     "travis-deploy-once": "travis-deploy-once",
     "test": "ava",
-    "uglify": "uglifyjs --compress --mangle -o src/index.js -- src/index.es5.js",
     "semantic-release": "semantic-release"
   },
   "config": {
@@ -40,7 +39,7 @@
     "plugin",
     "slate-react"
   ],
-  "author": "",
+  "author": "Nur Rony<pro.nmrony@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nmrony/slate-paste-imagify/issues"
@@ -51,8 +50,7 @@
     "is-url": "^1.2.4"
   },
   "peerDependencies": {
-    "slate": "^0.44.9",
-    "slate-react": "^0.21.15"
+    "slate": "^0.44.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -67,12 +65,7 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
     "husky": "^1.2.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "slate": "^0.44.9",
-    "slate-react": "^0.21.15",
-    "travis-deploy-once": "^5.0.11",
-    "uglify-es": "^3.3.9",
-    "semantic-release": "^15.13.2"
+    "semantic-release": "^15.13.2",
+    "travis-deploy-once": "^5.0.11"
   }
 }

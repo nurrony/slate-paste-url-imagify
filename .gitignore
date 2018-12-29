@@ -217,4 +217,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-index.js
+src/index.js

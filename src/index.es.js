@@ -19,7 +19,9 @@ const fetchRemoteExtension = async url => {
 
 export default function PasteUrlImagify(options = {}) {
   const { insertPastedImage = 'insertPastedImage', allowedImageTypes = ['jpg', 'jpeg', 'png', 'gif', 'svg'] } = options;
-
+  if (insertPastedImage === '' || !Array.isArray(allowedImageTypes)) {
+    throw new Error('"allowedImageTypes" must be an array');
+  }
   return {
     async onCommand(command, editor, next) {
       const { type, args } = command;

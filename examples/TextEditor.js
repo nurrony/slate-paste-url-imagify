@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Value } from 'slate';
 import { Editor } from 'slate-react';
-import PasteImagify from '../src';
+import PasteUrlImagify from '../src';
 import initialValue from './value.json';
 
 const schema = {
@@ -25,7 +25,7 @@ const DEFAULT_NODE = 'paragraph';
  * @type {Component}
  */
 class TextEditor extends Component {
-  plugins = [PasteImagify()];
+  plugins = [PasteUrlImagify()];
 
   commands = {
     insertPastedImage(editor, url) {

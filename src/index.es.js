@@ -17,7 +17,7 @@ const fetchRemoteExtension = async url => {
   }
 };
 
-export default function PasteImagify(options = {}) {
+export default function PasteUrlImagify(options = {}) {
   const { insertPastedImage = 'insertPastedImage', allowedImageTypes = ['jpg', 'jpeg', 'png', 'gif', 'svg'] } = options;
 
   return {

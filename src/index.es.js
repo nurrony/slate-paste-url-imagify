@@ -1,5 +1,5 @@
-import got from 'got';
 import isUrl from 'is-url';
+import needle from 'needle';
 const getExtension = name =>
   name
     .split('.')
@@ -10,7 +10,7 @@ const isAllowedImage = (allowedImageTypes, extension = '') => allowedImageTypes.
 
 const fetchRemoteExtension = async url => {
   try {
-    const { headers } = await got.get(url);
+    const { headers } = await needle('get', url);
     return headers['content-type'].split('/').pop();
   } catch (error) {
     throw error;

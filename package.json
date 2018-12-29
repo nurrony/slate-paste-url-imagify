@@ -47,8 +47,8 @@
   },
   "homepage": "https://nmrony.github.com/nmrony/slate-paste-imagify#readme",
   "dependencies": {
-    "got": "^9.5.0",
-    "is-url": "^1.2.4"
+    "is-url": "^1.2.4",
+    "needle": "^2.2.4"
   },
   "peerDependencies": {
     "slate": "^0.44.9"

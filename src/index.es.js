@@ -17,6 +17,8 @@ const fetchRemoteExtension = async url => {
   }
 };
 
+const removeQueryParams = url => url.split(/[?#]/)[0];
+
 export default function PasteUrlImagify(options = {}) {
   const { insertPastedImage = 'insertPastedImage', allowedImageTypes = ['jpg', 'jpeg', 'png', 'gif', 'svg'] } = options;
   if (insertPastedImage === '' || !Array.isArray(allowedImageTypes)) {
@@ -30,9 +32,10 @@ export default function PasteUrlImagify(options = {}) {
         (type === 'insertText' && isUrl((url = args[0]))) ||
         (type === 'insertFragment' && isUrl((url = args[0].text)))
       ) {
+        const urlWithoutParams = removeParams(url);
         try {
-          if (isAllowedImage(allowedImageTypes, getExtension(url))) {
-            editor.command(insertPastedImage, url).moveToEnd();
+          if (isAllowedImage(allowedImageTypes, getExtension(urlWithoutParams))) {
+            editor.command(insertPastedImage, urlWithoutParams).moveToEnd();
             return;
           }
 

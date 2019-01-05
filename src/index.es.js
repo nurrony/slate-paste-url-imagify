@@ -35,7 +35,7 @@ export default function PasteUrlImagify(options = {}) {
         const urlWithoutParams = removeParams(url);
         try {
           if (isAllowedImage(allowedImageTypes, getExtension(urlWithoutParams))) {
-            editor.command(insertPastedImage, urlWithoutParams).moveToEnd();
+            editor.command(insertPastedImage, url).moveToEnd();
             return;
           }
 

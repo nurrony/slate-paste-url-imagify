@@ -1,14 +1,14 @@
 import isUrl from 'is-url';
 import needle from 'needle';
-const getExtension = name =>
+export const getExtension = name =>
   name
     .split('.')
     .pop()
     .toLowerCase();
 
-const isAllowedImage = (allowedImageTypes, extension = '') => allowedImageTypes.includes(extension);
+export const isAllowedImage = (allowedImageTypes, extension = '') => allowedImageTypes.includes(extension);
 
-const fetchRemoteExtension = async url => {
+export const fetchRemoteExtension = async url => {
   try {
     const { headers } = await needle('get', url);
     return headers['content-type'].split('/').pop();
@@ -17,7 +17,7 @@ const fetchRemoteExtension = async url => {
   }
 };
 
-const removeQueryParams = url => url.split(/[?#]/)[0];
+export const removeQueryParams = url => url.split(/[?#]/)[0];
 
 export default function PasteUrlImagify(options = {}) {
   const { insertPastedImage = 'insertPastedImage', allowedImageTypes = ['jpg', 'jpeg', 'png', 'gif', 'svg'] } = options;
